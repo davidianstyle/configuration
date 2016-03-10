@@ -19,7 +19,7 @@ BOLDRED='1;31'
 BOLDGREEN='1;32'
 BOLDYELLOW='1;33'
 BOLDBLUE='1;34'
-BOLDPURPLE='1;35'
+BOLDMAGENTA='1;35'
 BOLDCYAN='1;36'
 BOLDWHITE='1;37'
 NOCOLOR='0'
@@ -31,7 +31,7 @@ then
 fi
 
 # Set up a custom prompt
-export PS1="\[\e[${GREEN}m\][\u@\h \@]\[\e[m\] \[\e[${WHITE}m\]\w\[\e[m\] \n\[\e[${MAGENTA}m\]$ \[\e[m\]";
+export PS1="\[\e[${CYAN}m\][\u@\h \@]\[\e[m\] \[\e[${MAGENTA}m\]\w\[\e[m\] \n\[\e[${WHITE}m\]$ \[\e[m\]";
 
 # Set default editor
 export EDITOR=emacs
