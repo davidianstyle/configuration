@@ -1,0 +1,57 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Define a few Colors
+BLACK='0;30'
+RED='0;31'
+GREEN='0;32'
+YELLOW='0;33'
+BLUE='0;34'
+PURPLE='0;35'
+CYAN='0;36'
+WHITE='0;37'
+BOLDBLACK='1;30'
+BOLDRED='1;31'
+BOLDGREEN='1;32'
+BOLDYELLOW='1;33'
+BOLDBLUE='1;34'
+BOLDPURPLE='1;35'
+BOLDCYAN='1;36'
+BOLDWHITE='1;37'
+NOCOLOR='0'
+
+# Set up grep highlighting
+if grep --color=auto --help 2> /dev/null 1>&2
+then
+        export GREP_OPTIONS='--color=auto'
+        export GREP_COLOR=$GREEN
+fi
+
+# Set up xterm-256 color
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+        export TERM='xterm-256color'
+else
+        export TERM='xterm-color'
+fi
+
+# Set up a custom prompt
+export PS1="\[\e[${CYAN}m\][\u@${HOSTNAME} \@]\[\e[m\] \[\e[${WHITE}m\]\w\[\e[m\] \n\[\e[${PURPLE}m\]$ \[\e[m\]";
+
+# Set up custom environment variables
+export PATH=$PATH:$HOME/bin
+export HOSTNAME=davidianstyle
+export VISUAL=emacs
+export LANG=en_US.UTF-8
+export CLICOLOR=YES
+export LSCOLORS=ExGxFxdxCxDxDxhbadExEx
+
+# User specific aliases and functions
+bind 'set completion-ignore-case on'
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-bright.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL

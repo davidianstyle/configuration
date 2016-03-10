@@ -2,6 +2,7 @@
 
 * .bash_profile
 * .bashrc
+* .bashrc.aws
 * .bashrc.raspberrypi
 * .emacs
 * .htaccess
