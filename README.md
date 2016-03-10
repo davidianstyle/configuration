@@ -1,7 +1,7 @@
 # Configuration Files
 
-* .bash_profile
 * .bash_aliases
+* .bash_profile
 * .bashrc
 * .bashrc.athena
 * .bashrc.aws
