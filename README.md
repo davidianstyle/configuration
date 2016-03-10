@@ -3,6 +3,7 @@
 * .bash_profile
 * .bashrc
 * .bashrc.aws
+* .bashrc.godaddy
 * .bashrc.raspberrypi
 * .emacs
 * .htaccess
