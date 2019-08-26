@@ -1,0 +1,135 @@
+# Define a few Color's
+BLACK='0;30'
+RED='0;31'
+GREEN='0;32'
+YELLOW='0;33'
+BLUE='0;34'
+PURPLE='0;35'
+CYAN='0;36'
+WHITE='0;37'
+BOLDBLACK='1;30'
+BOLDRED='1;31'
+BOLDGREEN='1;32'
+BOLDYELLOW='1;33'
+BOLDBLUE='1;34'
+BOLDPURPLE='1;35'
+BOLDCYAN='1;36'
+BOLDWHITE='1;37'
+NOCOLOR='0'              # No Color
+if [ -f /etc/profile ]; then
+	. /etc/profile
+fi
+
+export PS1="\[\e[${CYAN}m\][\u@\h \@]\[\e[m\] \[\e[${WHITE}m\]\w\[\e[m\] \n\[\e[${PURPLE}m\]\$ \[\e[m\]";
+# export PS1="\[\e[${CYAN}m\][\u@\h \@]\[\e[m\] \[\e[${WHITE}m\]\w\[\e[m\] \n\[\e[${PURPLE}m\]⚡  \[\e[m\]";
+if grep --color=auto --help 2> /dev/null 1>&2
+then
+	export GREP_OPTIONS='--color=auto'
+	export GREP_COLOR=$GREEN
+fi
+
+alias e='emacs'
+alias eamcs='emacs'
+alias emasc='emacs'
+alias vi='vim'
+alias p4=auto_local_p4
+alias p4o='p4 opened'
+alias p4d='p4 diff'
+alias p4s='p4 sync'
+alias p4e='p4 edit'
+alias p4r='p4 revert'
+alias setdev='export ATHENA_HOME=/home/dchang/p4/builds/$CURRENTBUILD;AX_HOME=/home/dchang/p4/athenax/$CURRENTBUILDNUMBER;echo "Dev Home - $CURRENTBUILDNUMBER"'
+alias setprev='export ATHENA_HOME=/home/dchang/p4/builds/$PREVIOUSBUILD;AX_HOME=/home/dchang/p4/athenax/$PREVIOUSBUILDNUMBER;echo "Dev Home - $PREVIOUSBUILDNUMBER"'
+alias setnext='export ATHENA_HOME=/home/dchang/p4/builds/$NEXTBUILD;AX_HOME=/home/dchang/p4/athenax/$NEXTBUILDNUMBER;echo "Dev Home - $NEXTBUILDNUMBER"'
+alias setprod='export ATHENA_HOME=/home/dchang/p4/prod;AX_HOME=/home/dchang/p4/athenax/release;echo "Prod Home"'
+alias setcorp='export ATHENA_HOME=/home/dchang/p4/prod;AX_HOME=/home/dchang/p4/athenax/release;echo "Prod Home"'
+alias gohome='cd $ATHENA_HOME'
+alias axhome='cd $AX_HOME'
+alias perllib='cd $ATHENA_HOME/perllib/Athena/'
+alias clinical='cd $ATHENA_HOME/perllib/Athena/Clinical'
+alias html='cd $ATHENA_HOME/perllib/Athena/HTML'
+alias p4p='cd $ATHENA_HOME/perllib/Athena/Clinical/P4P'
+alias p4pscripts='cd $ATHENA_HOME/scripts/app/clinicals/p4p'
+alias encountersection='cd $ATHENA_HOME/perllib/Athena/Clinical/Encounter/Section'
+alias documentclass='cd $ATHENA_HOME/perllib/Athena/Document/Class'
+alias htdocs='cd $ATHENA_HOME/htdocs/'
+alias static='cd $ATHENA_HOME/htdocs/static/'
+alias dailydml='cd $P4_HOME/techops/clinicals/dailydml'
+alias p4pdat='cd $P4_HOME/techops/clinicals/dat/p4p'
+alias oneoffscripts='cd $P4_HOME/techops/clinicals/oneoffscripts'
+alias onetimejobs='p4 edit $P4_HOME/prod/scripts/crontab/one_time_jobs.txt; $EDITOR $P4_HOME/prod/scripts/crontab/one_time_jobs.txt'
+alias megapatch='p4 edit $P4_HOME/scripts/build/$CURRENTBUILDNUMBER/${CURRENTBUILDNUMBER}_megapatch.pl; $EDITOR $P4_HOME/scripts/build/$CURRENTBUILDNUMBER/${CURRENTBUILDNUMBER}_megapatch.pl'
+alias schemascripts='cd $ATHENA_HOME/scripts/schema'
+alias myscripts='cd $HOME/scripts'
+alias misc='cd $HOME/misc'
+alias patchfiles='cd $HOME/patchfiles'
+alias sql='cd $HOME/sql'
+alias bashrc='$EDITOR $HOME/.bashrc'
+alias config='$EDITOR $HOME/.httpd_profile'
+alias fileroot='cd $FILEROOT'
+alias guidelines='cd $ATHENA_HOME/perllib/Athena/Clinical/Guideline/Custom'
+alias mapping='cd $ATHENA_HOME/perllib/Athena/Clinical/Lab'
+alias backfills='cd $ATHENA_HOME/scripts/app/clinicals'
+alias testfax='perl $P4_HOME/techops/clinicals/test-fax-server.pl'
+alias jserror='perl $P4_HOME/techops/clinicals/scripts/parse_js_error.pl'
+alias fakedocs='perl $ATHENA_HOME/scripts/app/clinicals/create_fake_documents.pl --numimages 100'
+alias tables='$EDITOR $ATHENA_HOME/perllib/Athena/AthenaSchema/Canonical/Tables/PRACTICE.pm'
+alias root='$EDITOR $ATHENA_HOME/perllib/Athena/AthenaSchema/Canonical/Tables/ROOT.pm'
+alias views='$EDITOR $ATHENA_HOME/perllib/Athena/AthenaSchema/Canonical/Views.pm'
+alias functions='$EDITOR $ATHENA_HOME/perllib/Athena/AthenaSchema/Canonical/Functions.pm'
+alias documentactionreasons='$EDITOR $ATHENA_HOME/scripts/app/clinicals/documentactionreason.pl'
+alias syncpractice='perl $ATHENA_HOME/scripts/schema/sync_practice.pl'
+alias syncfunctions='perl $ATHENA_HOME/scripts/schema/sync_functions.pl'
+alias dharr='harr dchangdev; derr'
+alias nharr='harr dchangnext; nerr'
+alias pharr='harr dchangprod; perr'
+alias charr='harr dchangcorp; cerr'
+alias iharr='harr dchangintranet; ierr'
+alias sharr='harr dchangscrambled'
+alias uharr='harr dchangunscrambled'
+alias aharr='harr dchangdev;harr dchangprod;harr dchangcorp;'
+alias derr='err dchangdev | logcolor'
+alias nerr='err dchangnext | logcolor'
+alias perr='err dchangprod | logcolor'
+alias cerr='err dchangcorp | logcolor'
+alias ierr='err dchangintranet | logcolor'
+alias dacc='acc dchangdev | logcolor'
+alias pacc='acc dchangprod | logcolor'
+alias cacc='acc dchangcorp | logcolor'
+alias iacc='acc dchangintranet | logcolor'
+alias patchharness='perl $P4_HOME/scripts/build/patch_harness.pl'
+alias refreshsnaps='perl $ATHENA_HOME/scripts/schema/refresh_snapshots.pl --tables p4pattribution,p4pcanonical,p4pcanonicalparameter,p4pcanonicaltemplate,p4pmeasure,p4pmeasurecanonical,p4pmeasureexclusion,p4pmeasureparameter,p4pmeasuresatisfaction,p4pmeasuretemplate,p4pparameter,p4pparameterdata,p4pprogram,p4ptemplate,p4ptemplateparameter --masterroot '
+alias apply='perl $P4_HOME/techops/coredev/p4/apply_changelists'
+alias refresh='perl $ATHENA_HOME/scripts/schema/refresh_snapshots.pl'
+alias showusers='users | tr " " "\n" | uniq'
+alias errlogs="tail -0f /usr/local/athena/var/apachelogs/dchang*error | perl -p -e 's/^\[/------------------\n[/;s/<-->/\n/g;s/^/ERR: /mg' &"
+alias allsync='p4 sync  p4 sync //depot/builds/$CURRENTBUILD/...; p4 sync //depot/intranet/...; p4 sync //depot/prod/...@production; p4 sync //depot/scripts/...; p4 sync //depot/techops/...'
+alias weblogs='mysql -h weblog2 -A WEBLOGS -u WEBLOGS --password=WEBLOGS'
+alias parsejserror='perl $P4_HOME/techops/clinicals/scripts/parse_js_error.pl'
+alias qmdatatest='perl $ATHENA_HOME/scripts/app/clinicals/p4p_publish_dats.pl ptest1 --username dchang --dir $P4_HOME/techops/clinicals/dat/p4p'
+alias restore='/usr/bin/perl $ATHENA_HOME/scripts/app/clinicals/p4p_publish_dats.pl --username dchang --dir $P4_HOME/techops/clinicals/dat/p4p'
+alias less='$ATHENA_HOME/scripts/minification/lessc'
+
+export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+
+bind 'set completion-ignore-case on'
+set completion-ignore-case on
+
+shopt -s checkwinsize
+
+HISTFILESIZE=400000000
+HISTSIZE=10000
+PROMPT_COMMAND="history -a"
+export HISTSIZE PROMPT_COMMAND
+
+shopt -s histappend
+
+function uglylessc {
+	timestamp=`date -u "+%s"`
+	echo ".airlock-classic-shared{" > $timestamp.patient-banner.less;
+	cat $ATHENA_HOME/htdocs/static/shared/styles/purpleview/primitives/colors.less $ATHENA_HOME/htdocs/static/athenax/less/*.less | grep -v '@import' >> $timestamp.patient-banner.less;
+	echo "}" >> $timestamp.patient-banner.less; 
+	$ATHENA_HOME/scripts/minification/lessc $timestamp.patient-banner.less > $ATHENA_HOME/htdocs/static/athenax/patient-banner.css
+	rm $timestamp.patient-banner.less;
+}

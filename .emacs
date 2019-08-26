@@ -6,10 +6,8 @@
 ;; Highlight region when between mark and point
 (custom-set-variables
  '(global-font-lock-mode t nil (font-lock))
- '(perl-continued-brace-offset -8)
- '(perl-continued-statement-offset 8)
- '(perl-indent-level 8)
- '(show-paren-mode t nil (paren)) '(transient-mark-mode t))
+ '(show-paren-mode t nil (paren))
+ '(transient-mark-mode t))
 
 ;; Disable save files
 (setq make-backup-files nil)
@@ -32,3 +30,20 @@
 
 ;; Set tab width
 (setq default-tab-width 8)
+
+(add-to-list 'load-path "~/.emacs.d/lisp")
+
+;; ELPA additional repositories
+(require 'package)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(package-initialize)
+
+;; No file menu
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;; Enable packages at startup (for themes)
+(setq package-enable-at-startup nil) (package-initialize)
