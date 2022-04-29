@@ -1,0 +1,93 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# Define a few Colors
+BLACK='0;30'
+RED='0;31'
+GREEN='0;32'
+YELLOW='0;33'
+BLUE='0;34'
+MAGENTA='0;35'
+CYAN='0;36'
+WHITE='0;37'
+BOLDBLACK='1;30'
+BOLDRED='1;31'
+BOLDGREEN='1;32'
+BOLDYELLOW='1;33'
+BOLDBLUE='1;34'
+BOLDMAGENTA='1;35'
+BOLDCYAN='1;36'
+BOLDWHITE='1;37'
+NOCOLOR='0'
+
+if grep --color=auto --help 2> /dev/null 1>&2
+then
+        export GREP_OPTIONS='--color=auto'
+        export GREP_COLOR=$YELLOW
+fi
+
+# Set up a custom prompt
+export PS1="\[\e[${CYAN}m\][\u@\h \@]\[\e[m\] \[\e[${MAGENTA}m\]\w\[\e[m\] \n\[\e[${WHITE}m\]$ \[\e[m\]";
+
+# Set default editor
+export EDITOR=emacs
+# alias emacs=/Applications/Emacs.app/Contents/MacOS/Emacs
+
+BOLDBLUE='1;34'
+BOLDMAGENTA='1;35'
+BOLDCYAN='1;36'
+BOLDWHITE='1;37'
+NOCOLOR='0'
+
+if grep --color=auto --help 2> /dev/null 1>&2
+then
+        export GREP_OPTIONS='--color=auto'
+        export GREP_COLOR=$YELLOW
+fi
+
+# Set up a custom prompt
+export PS1="\[\e[${CYAN}m\][\u@\h \@]\[\e[m\] \[\e[${MAGENTA}m\]\w\[\e[m\] \n\[\e[${WHITE}m\]$ \[\e[m\]";
+
+# Set default editor
+export EDITOR=emacs
+# alias emacs=/Applications/Emacs.app/Contents/MacOS/Emacs
+
+# avoid duplicates..
+export HISTCONTROL=ignoredups:erasedups
+
+# append history entries..
+shopt -s histappend
+
+# After each command, save and reload history
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+# alias docker ps
+alias dps='docker ps --format '\''table {{.ID}}\t{{.Names}}\t{{.Status}}'\'''
+
+# Set xterm-256color for correct color scheme
+export TERM=xterm-256color
+
+# Set up jenv
+export PATH="$HOME/.jenv/bin:$PATH:$HOME/Code/bin"
+
+eval "$(jenv init -)"
+
+# Set Java version to 8
+# alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
+
+# Ignore case for tab-completion
+bind "set completion-ignore-case on"
+
+complete -C /usr/local/bin/terraform terraform
