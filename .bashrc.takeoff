@@ -87,6 +87,10 @@ eval "$(jenv init -)"
 # Set Java version to 8
 # alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
 
+# Default colors for ls/gls command
+alias ls='ls --color=auto'
+alias gls='gls --color=auto'
+
 # Ignore case for tab-completion
 bind "set completion-ignore-case on"
 
