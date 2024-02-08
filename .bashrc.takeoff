@@ -96,3 +96,15 @@ alias gls='gls --color=auto'
 bind "set completion-ignore-case on"
 
 complete -C /usr/local/bin/terraform terraform
+
+# Initialize pyenv
+export PATH="$(pyenv root)/shims:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init --path)"
+fi
+
+# gcloud config
+source "$(brew --prefix)/share/google-cloud-sdk/path.bash.inc"
+
