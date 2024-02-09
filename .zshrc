@@ -1,8 +1,6 @@
 # Set up a custom prompt
-autoload -Uz vcs_info
-precmd() { vcs_info }
-precmd() { print -rP "%F{cyan}[%n@%m %t] %F{magenta}%~" }
-export PROMPT="$ ";
+NEWLINE=$'\n'
+export PROMPT="%F{cyan}[%n@%m %t] %F{magenta}%~ %F{white}${NEWLINE}$ ";
 
 # Set default editor
 export EDITOR=emacs
