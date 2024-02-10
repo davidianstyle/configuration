@@ -53,7 +53,7 @@
  '(inhibit-startup-screen t)
  '(package-enable-at-startup nil)
  '(package-selected-packages
-   '(typescript-mode easy-hugo markdown-mode go-mode melancholy-theme molokai-theme spacemacs-theme paredit fzf cider ac-cider))
+   '(yaml-mode typescript-mode easy-hugo markdown-mode go-mode melancholy-theme molokai-theme spacemacs-theme paredit fzf cider ac-cider))
  '(pdf-view-midnight-colors '("#b2b2b2" . "#262626"))
  '(show-paren-mode t nil (paren))
  '(transient-mark-mode t))
