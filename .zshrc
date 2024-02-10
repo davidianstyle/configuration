@@ -17,7 +17,8 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Load powerlevel10k (https://github.com/romkatv/powerlevel10k)
-source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
+# See https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#homebrew
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
