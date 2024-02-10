@@ -1,6 +1,6 @@
 # Set up a custom prompt
 NEWLINE=$'\n'
-export PROMPT="%F{cyan}[%n@%m %t] %F{magenta}%~ %F{white}${NEWLINE}$ ";
+export PROMPT="%F{cyan}[%n@%m%t] %F{magenta}%~ %F{white}${NEWLINE}$ ";
 
 # Set default editor
 export EDITOR=emacs
