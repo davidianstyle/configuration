@@ -11,10 +11,20 @@ export EDITOR=emacs
 # Append history entries
 setopt APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
 
 # Ignore case for tab-completion
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Initialize pyenv
+export PATH="$(pyenv root)/shims:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init --path)"
+fi
 
 # Load powerlevel10k (https://github.com/romkatv/powerlevel10k)
 # See https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#homebrew
