@@ -11,52 +11,8 @@
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
 
-;; https://stackoverflow.com/questions/43513448/emacs-256-colors-in-iterm2
-(setq base16-theme-use-shell-colors t)
-;; (setq base16-theme-256-color-source "base16-shell")
-
 ;; Load theme
-(load-theme 'base16-chalk t)
-
-;; Highlight region when between mark and point
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#151515" "#fb9fb1" "#acc267" "#ddb26f" "#6fc2ef" "#e1a3ee" "#6fc2ef" "#d0d0d0"])
- '(ansi-term-color-vector
-   [unspecified "#151515" "#fb9fb1" "#acc267" "#ddb26f" "#6fc2ef" "#e1a3ee" "#6fc2ef" "#d0d0d0"] t)
- '(custom-enabled-themes '(spacemacs-dark))
- '(custom-safe-themes
-   '("aea30125ef2e48831f46695418677b9d676c3babf43959c8e978c0ad672a7329" "716f0a8a9370912d9e6659948c2cb139c164b57ef5fda0f337f0f77d47fe9073" "8f567db503a0d27202804f2ee51b4cd409eab5c4374f57640317b8fcbbd3e466" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "36282815a2eaab9ba67d7653cf23b1a4e230e4907c7f110eebf3cdf1445d8370" "1025e775a6d93981454680ddef169b6c51cc14cea8cb02d1872f9d3ce7a1da66" "44961a9303c92926740fc4121829c32abca38ba3a91897a4eab2aa3b7634bed4" "760ce657e710a77bcf6df51d97e51aae2ee7db1fba21bbad07aab0fa0f42f834" "34ed3e2fa4a1cb2ce7400c7f1a6c8f12931d8021435bad841fdc1192bd1cc7da" "b3bcf1b12ef2a7606c7697d71b934ca0bdd495d52f901e73ce008c4c9825a3aa" "7bef2d39bac784626f1635bd83693fae091f04ccac6b362e0405abf16a32230c" "c11d033a3099ded27b4dde505fdb2232ae9996f7e4becac351c90b92d9b48f07" "fede08d0f23fc0612a8354e0cf800c9ecae47ec8f32c5f29da841fe090dfc450" "c968804189e0fc963c641f5c9ad64bca431d41af2fb7e1d01a2a6666376f819c" "9be1d34d961a40d94ef94d0d08a364c3d27201f3c98c9d38e36f10588469ea57" "3380a2766cf0590d50d6366c5a91e976bdc3c413df963a0ab9952314b4577299" "cea3ec09c821b7eaf235882e6555c3ffa2fd23de92459751e18f26ad035d2142" "5a39d2a29906ab273f7900a2ae843e9aa29ed5d205873e1199af4c9ec921aaab" "e1498b2416922aa561076edc5c9b0ad7b34d8ff849f335c13364c8f4276904f0" default))
- '(global-font-lock-mode t nil (font-lock))
- '(hl-todo-keyword-faces
-   '(("TODO" . "#dc752f")
-     ("NEXT" . "#dc752f")
-     ("THEM" . "#2aa198")
-     ("PROG" . "#268bd2")
-     ("OKAY" . "#268bd2")
-     ("DONT" . "#d70000")
-     ("FAIL" . "#d70000")
-     ("DONE" . "#86dc2f")
-     ("NOTE" . "#875f00")
-     ("KLUDGE" . "#875f00")
-     ("HACK" . "#875f00")
-     ("TEMP" . "#875f00")
-     ("FIXME" . "#dc752f")
-     ("XXX+" . "#dc752f")
-     ("\\?\\?\\?+" . "#dc752f")))
- '(inhibit-startup-screen t)
- '(package-enable-at-startup nil)
- '(package-selected-packages
-   '(yaml-mode typescript-mode easy-hugo markdown-mode go-mode melancholy-theme molokai-theme spacemacs-theme paredit fzf cider ac-cider))
- '(pdf-view-midnight-colors '("#b2b2b2" . "#262626"))
- '(show-paren-mode t nil (paren))
- '(transient-mark-mode t))
+(load-theme 'sanityinc-tomorrow-eighties t)
 
 ;; Disable save files
 (setq make-backup-files nil)
@@ -121,6 +77,12 @@
     (package-refresh-contents))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
