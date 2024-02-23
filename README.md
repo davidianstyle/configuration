@@ -8,6 +8,10 @@
 * .bashrc.godaddy
 * .bashrc.openstack
 * .bashrc.raspberrypi
+* .bashrc.takeoff
 * .emacs
+* .emacs.takeoff
 * .htaccess
+* .p10k.zsh
 * .tmux.conf
+* .zshrc
