@@ -26,6 +26,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init --path)"
 fi
 
+# Initialize gcloud
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+
 # Load powerlevel10k (https://github.com/romkatv/powerlevel10k)
 # See https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#homebrew
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
