@@ -18,6 +18,9 @@ setopt SHARE_HISTORY
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+# Always color ls
+alias ls='ls --color=always'
+
 # Initialize pyenv
 export PATH="$(pyenv root)/shims:$PATH"
 eval "$(pyenv init --path)"
