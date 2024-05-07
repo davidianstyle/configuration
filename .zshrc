@@ -18,6 +18,9 @@ setopt SHARE_HISTORY
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+# Always color ls
+alias ls='ls --color=always'
+
 # Initialize pyenv
 export PATH="$(pyenv root)/shims:$PATH"
 eval "$(pyenv init --path)"
@@ -57,6 +60,9 @@ load-nvmrc
 if command -v ngrok &>/dev/null; then
     eval "$(ngrok completion)"
 fi
+
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 # Load powerlevel10k (https://github.com/romkatv/powerlevel10k)
 # See https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#homebrew
