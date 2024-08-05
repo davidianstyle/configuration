@@ -18,8 +18,11 @@ setopt SHARE_HISTORY
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-# Always color ls
-alias ls='ls --color=always'
+# Aliases
+alias ls='lsd'
+
+# Set default AWS profile
+export AWS_PROFILE=David-SSO
 
 # Initialize pyenv
 export PATH="$(pyenv root)/shims:$PATH"
@@ -61,6 +64,7 @@ if command -v ngrok &>/dev/null; then
     eval "$(ngrok completion)"
 fi
 
+# gcloud
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
