@@ -1,0 +1,97 @@
+;; .emacs
+
+;; Uncomment this line to disable loading of "default.el" at startup
+;; (setq inhibit-default-init t)
+
+;; ELPA additional repositories
+(require 'package)
+;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(package-initialize)
+
+;; Load theme
+(load-theme 'sanityinc-tomorrow-eighties t)
+
+;; Disable save files
+(setq make-backup-files nil)
+(setq auto-save-list-file-name nil)
+(setq auto-save-default nil)
+
+;; Turn on font-lock mode
+(when (fboundp 'global-font-lock-mode)
+  (global-font-lock-mode t))
+
+;; Enable visual feedback on selections
+;;(setq transient-mark-mode t)
+
+;; Default to better frame titles
+(setq frame-title-format
+      (concat  "%b - emacs@" system-name))
+
+;; Add goto-line functionality
+(global-set-key "\C-x\C-j" 'goto-line)
+
+;; Set tab width
+(setq default-tab-width 2)
+
+;; Use prettier for code formatting
+(add-hook 'after-init-hook #'global-prettier-mode)
+(global-set-key (kbd "C-x p") 'prettier-prettify)
+
+;; Set javascript-mode for *.tsx files
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . javascript-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . javascript-mode))
+
+(add-to-list 'load-path "~/.emacs.d/lisp")
+
+;; No file menu
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;; Enable packages at startup (for themes)
+;;(setq package-enable-at-startup nil) (package-initialize)
+;;(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+;; )
+
+;; cider-specific
+(global-set-key (kbd "C-c j") 'cider-jack-in)
+(global-set-key (kbd "C-c q") 'cider-connect)
+(global-set-key (kbd "C-c c") 'cider-repl-clear-buffer)
+(global-set-key (kbd "C-c r") 'cider-inspect-last-result)
+(global-set-key (kbd "C-c e") 'cider-macroexpand-1)
+
+;; Fixes issue with M-x package-refresh-contents
+;; https://emacs.stackexchange.com/questions/51721/failed-to-download-gnu-archive
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
+;; Change cursor ("box" "hollow" "bar" "hbar")
+(setq-default cursor-type 'box)
+
+;; Add lein to exec path
+(add-to-list 'exec-path "/Users/dchang/Code/bin/")
+
+;; Update packages
+(when (not package-archive-contents)
+    (package-refresh-contents))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("04aa1c3ccaee1cc2b93b246c6fbcd597f7e6832a97aaeac7e5891e6863236f9f" "7fd8b914e340283c189980cd1883dbdef67080ad1a3a9cc3df864ca53bdc89cf" default))
+ '(package-selected-packages
+   '(ob-dart dart-mode prettier-js prettier markdown-mode go-mode yaml-mode spacemacs-theme tangonov-theme pastelmac-theme nova-theme color-theme-sanityinc-tomorrow catppuccin-theme base16-theme)))
