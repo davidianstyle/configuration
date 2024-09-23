@@ -100,8 +100,8 @@ if command -v ngrok > /dev/null 2>&1; then
 fi
 
 # Load Powerlevel10k theme
-if [ -f "$(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" ]; then
-  source "$(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme"
+if [ -f "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" ]; then
+  source "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme"
 fi
 
 # Load Powerlevel10k configuration
