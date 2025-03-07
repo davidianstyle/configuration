@@ -57,6 +57,9 @@ fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 
+# Set JAVA_HOME
+export JAVA_HOME=$(asdf where java)
+
 # Load Powerlevel10k theme
 if [ -f "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" ]; then
   source "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme"
