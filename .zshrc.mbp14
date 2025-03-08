@@ -57,6 +57,9 @@ fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 
+# For Colemak-DH keyboard layout left home row keys ``arst` == `asdf`
+alias arst='asdf'
+
 # Set JAVA_HOME
 export JAVA_HOME=$(asdf where java)
 
