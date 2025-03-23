@@ -1,0 +1,73 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Set default editor
+export EDITOR=emacs
+
+# Set default AWS profile
+export AWS_PROFILE=David-SSO
+
+# Append history entries
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+# Ignore case for tab-completion
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Include ~/Code/bin/ directory (https://github.com/davidianstyle/bin.git) in $PATH
+export PATH="$HOME/Code/bin/:$PATH"
+
+# Set $ANDROID_HOME and include it in $PATH
+export ANDROID_HOME="/usr/local/share/android-commandlinetools"
+export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
+
+# Add flutterfire_cli to $PATH
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+# Install ngrok completions
+if command -v ngrok &>/dev/null; then
+    eval "$(ngrok completion)"
+fi
+
+# Initialize fzf
+eval "$(fzf --zsh)"
+
+# Aliases
+alias ls='lsd'
+
+# Initialize asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# append completions to fpath
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+# For Colemak-DH keyboard layout left home row keys ``arst` == `asdf`
+alias arst='asdf'
+
+# Set JAVA_HOME
+export JAVA_HOME=$(asdf where java)
+
+# Load powerlevel10k (https://github.com/romkatv/powerlevel10k)
+# See https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#homebrew
+source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/davidchang/.dart-cli-completion/zsh-config.zsh ]] && . /Users/davidchang/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
