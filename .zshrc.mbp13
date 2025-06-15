@@ -22,6 +22,10 @@ setopt SHARE_HISTORY
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+# Set word boundaries
+autoload -U select-word-style
+select-word-style bash
+
 # Aliases
 alias ls='lsd'
 
@@ -70,4 +74,3 @@ fi
 
 # Load Powerlevel10k configuration
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
