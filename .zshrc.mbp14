@@ -52,6 +52,9 @@ export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools/bin:$ANDROID_HOME/
 
 # Initialize asdf
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# Native Claude Code install — keep ~/.local/bin ahead of asdf shims so an
+# asdf-shimmed (npm) claude can never intercept the node-independent native binary.
+export PATH="$HOME/.local/bin:$PATH"
 # append completions to fpath
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 # initialise completions with ZSH's compinit

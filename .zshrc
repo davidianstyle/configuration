@@ -94,6 +94,10 @@ if command -v rbenv > /dev/null 2>&1; then
   eval "$(rbenv init -)"
 fi
 
+# Native Claude Code install — keep ~/.local/bin ahead of version-manager shims so a
+# globally-installed (npm/pyenv/etc.) claude can never intercept the node-independent native binary.
+export PATH="$HOME/.local/bin:$PATH"
+
 # Install ngrok completions
 if command -v ngrok > /dev/null 2>&1; then
   eval "$(ngrok completion)"
