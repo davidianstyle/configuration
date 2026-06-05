@@ -3,6 +3,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Dedupe PATH entries (collapses any double-adds from re-sourcing)
+typeset -U path PATH
+
 # Set default editor
 export EDITOR=emacs
 
@@ -10,7 +13,7 @@ export EDITOR=emacs
 # export HOMEBREW_GITHUB_API_TOKEN=your_personal_access_token_here
 
 # Set AWS profile
-export AWS_PROFILE=David-SSO
+export AWS_PROFILE=default
 
 # Zsh history settings
 setopt APPEND_HISTORY
