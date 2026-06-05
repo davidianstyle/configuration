@@ -7,8 +7,9 @@ copy the base templates into place (e.g. `.zshrc` → `~/.zshrc`).
 ## Naming convention
 
 * **Base templates** (no suffix) are the canonical, machine-agnostic versions
-  that get copied directly into `$HOME`. macOS uses `.zshrc`; version managers
-  are unified under [asdf](https://asdf-vm.com/) (see `.tool-versions`).
+  that get copied directly into `$HOME`. macOS uses `.zshrc`; Linux hosts use
+  `.zshrc.linux` (Oh My Zsh + apt tooling). Version managers are unified under
+  [asdf](https://asdf-vm.com/) (see `.tool-versions`).
 * **Host/environment overlays** (`.<base>.<env>`) are kept for reference and
   for environments that differ meaningfully from the base — they are *not*
   collapsible into the template:
@@ -21,6 +22,7 @@ copy the base templates into place (e.g. `.zshrc` → `~/.zshrc`).
 ## Shell
 
 * `.zshrc` — primary macOS shell (Powerlevel10k, asdf, fzf, Android SDK)
+* `.zshrc.linux` — Linux shell (Oh My Zsh + Powerlevel10k, asdf, exa/bat/rg/fd)
 * `.bashrc`, `.bash_profile`, `.bash_aliases` — bash base
 * `.p10k.zsh` — Powerlevel10k prompt theme
 * `.tool-versions` — asdf-managed runtime versions
