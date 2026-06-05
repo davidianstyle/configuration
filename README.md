@@ -36,7 +36,8 @@ copy the base templates into place (e.g. `.zshrc` → `~/.zshrc`).
 
 * `.curlrc` — curl defaults
 * `.aws/config` — AWS SSO profile
-* `Brewfile` — Homebrew bundle
+* `Brewfile` — single source of truth for Homebrew installs (formulae, casks,
+  fonts, Mac App Store apps); applied by `setup-mac.sh` via `brew bundle`
 * `dchang_key.pub` — public SSH key
 
 ## Web server (legacy)
