@@ -22,7 +22,7 @@ setopt SHARE_HISTORY
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-# Set word boundaries
+# Set word boundaries to bash style
 autoload -U select-word-style
 select-word-style bash
 
@@ -54,7 +54,7 @@ export ANDROID_HOME="$(brew --prefix)/share/android-commandlinetools"
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
 
-# Initialize asdf
+# Initialize asdf (single version manager for node, python, java, ruby, etc.)
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # Native Claude Code install — keep ~/.local/bin ahead of asdf shims so an
 # asdf-shimmed (npm) claude can never intercept the node-independent native binary.

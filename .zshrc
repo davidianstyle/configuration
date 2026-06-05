@@ -22,6 +22,10 @@ setopt SHARE_HISTORY
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+# Set word boundaries to bash style
+autoload -U select-word-style
+select-word-style bash
+
 # Aliases
 alias ls='lsd'
 
@@ -31,6 +35,11 @@ if command -v fzf > /dev/null 2>&1; then
   source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
 fi
 
+# Install ngrok completions
+if command -v ngrok > /dev/null 2>&1; then
+  eval "$(ngrok completion)"
+fi
+
 # Add custom bin directories to PATH
 export PATH="$PATH:$HOME/bin:$HOME/Code/bin"
 
@@ -38,70 +47,28 @@ export PATH="$PATH:$HOME/bin:$HOME/Code/bin"
 export PATH="$PATH:$HOME/.pub-cache/bin"
 
 # Set PATH for Android development
+export ANDROID_NDK_HOME="$(brew --prefix)/share/android-ndk"
 export ANDROID_HOME="$(brew --prefix)/share/android-commandlinetools"
+# Set this ANDROID_HOME when using non-Homebrew installed version of Android Studio
+# export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_SDK_ROOT=$ANDROID_HOME
 export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
 
-# SDKMAN initialization (if installed)
-if [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
-  export SDKMAN_DIR="$HOME/.sdkman"
-  source "$HOME/.sdkman/bin/sdkman-init.sh"
-fi
-
-# Initialize pyenv
-if command -v pyenv > /dev/null 2>&1; then
-  export PYENV_ROOT="$(pyenv root)"
-  export PATH="$PYENV_ROOT/shims:$PATH"
-  eval "$(pyenv init --path)"
-  eval "$(pyenv init -)"
-fi
-
-# Initialize nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Automatically switch node versions when moving to a directory with a .nvmrc file
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to default node version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-
-# Initialize jenv
-if command -v jenv > /dev/null 2>&1; then
-  export PATH="$HOME/.jenv/bin:$PATH"
-  eval "$(jenv init -)"
-fi
-
-# Initialize rbenv
-if command -v rbenv > /dev/null 2>&1; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
-# Native Claude Code install — keep ~/.local/bin ahead of version-manager shims so a
-# globally-installed (npm/pyenv/etc.) claude can never intercept the node-independent native binary.
+# Initialize asdf (single version manager for node, python, java, ruby, etc.)
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# Native Claude Code install — keep ~/.local/bin ahead of asdf shims so an
+# asdf-shimmed (npm) claude can never intercept the node-independent native binary.
 export PATH="$HOME/.local/bin:$PATH"
+# append completions to fpath
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
 
-# Install ngrok completions
-if command -v ngrok > /dev/null 2>&1; then
-  eval "$(ngrok completion)"
-fi
+# For Colemak-DH keyboard layout left home row keys ``arst` == `asdf`
+alias arst='asdf'
+
+# Set JAVA_HOME
+export JAVA_HOME=$(asdf where java)
 
 # Load Powerlevel10k theme
 if [ -f "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" ]; then
