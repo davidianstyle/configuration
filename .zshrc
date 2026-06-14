@@ -70,8 +70,13 @@ autoload -Uz compinit && compinit
 # For Colemak-DH keyboard layout left home row keys ``arst` == `asdf`
 alias arst='asdf'
 
-# Set JAVA_HOME
-export JAVA_HOME=$(asdf where java)
+# Set JAVA_HOME (only if asdf is installed and a java version is set — otherwise
+# `asdf where java` errors on every shell startup)
+if command -v asdf >/dev/null 2>&1; then
+  _java_home="$(asdf where java 2>/dev/null)"
+  [[ -n "$_java_home" ]] && export JAVA_HOME="$_java_home"
+  unset _java_home
+fi
 
 # Load Powerlevel10k theme
 if [ -f "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" ]; then
